@@ -51,7 +51,7 @@ h6 {
 
 .back-to-top i {
   font-size: 28px;
-  color: #fff;
+  color: rgb(255, 255, 255);
   line-height: 0;
 }
 
@@ -165,7 +165,7 @@ h6 {
   align-items: center;
   color: #a8a9b4;
   padding: 12px 15px;
-  margin-bottom: 8px;
+  margin-bottom: -8px;
   transition: 0.3s;
   font-size: 15px;
 }
@@ -684,7 +684,41 @@ section {
 # Services
 --------------------------------------------------------------*/
 .services .icon-box {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  border: 1px solid #b9bdbe;
+  
+  
+
+}
+.s1{
+  
+    
+    border: 1px solid #c5ccce;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+    max-width: 32%;
+    
+
+}
+.s2{
+  border: 1px solid #c5ccce;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  max-width: 32%;
+  
+
+}
+.s3{
+  border: 1px solid #c5ccce;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  max-width: 32%;
 }
 
 .services .icon {
@@ -697,7 +731,7 @@ section {
   background: #149ddd;
   border-radius: 50%;
   transition: 0.5s;
-  border: 1px solid #149ddd;
+  border: 1px solid #3ca5d6;
 }
 
 .services .icon i {
