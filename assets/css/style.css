@@ -73,7 +73,7 @@ h6 {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 300px;
+  width: 297px;
   transition: all ease-in-out 0.5s;
   z-index: 9997;
   transition: all 0.5s;
@@ -686,6 +686,7 @@ section {
 .services .icon-box {
   margin-bottom: 12px;
   border: 1px solid #b9bdbe;
+  margin-left: -3px;
   
   
 
@@ -696,9 +697,10 @@ section {
     border: 1px solid #c5ccce;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-right: 3px;
+    margin-right: 2px;
     margin-bottom: 5px;
-    max-width: 32%;
+  
+    
     
 
 }
@@ -706,9 +708,9 @@ section {
   border: 1px solid #c5ccce;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin-right: 3px;
+  margin-right: 2px;
   margin-bottom: 5px;
-  max-width: 32%;
+  
   
 
 }
@@ -716,9 +718,8 @@ section {
   border: 1px solid #c5ccce;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin-right: 3px;
   margin-bottom: 5px;
-  max-width: 32%;
+ 
 }
 
 .services .icon {
@@ -1135,4 +1136,28 @@ section {
     width: auto;
     padding-right: 20px 15px;
   }
+}
+
+
+/* form*/
+.headder{
+
+  text-align: center;
+}
+.container-form{
+  background-color: #e2e2e2;
+  height: 500px;
+}
+
+.form-group{
+ margin: 25px;
+}
+#message{
+  height: 160px;
+}
+.primary_btn{
+  margin-left: 25px;
+  background-color: #18d26e;
+  border: 2px solid #76cfa0;
+  padding: 10px;
 }

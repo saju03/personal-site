@@ -12,6 +12,7 @@
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -280,17 +281,17 @@
         </div>
 
         <div class="row" >
-          <div class="col-lg-4 col-md-6 s1" data-aos="fade-up">
+          <div class="col-lg-4 col-md-6 s1 icon-box" data-aos="fade-up">
             <div class="icon"><i class="bi bi-briefcase"></i></div>
             <h4 class="title"><a href="">web design</a></h4>
             
           </div>
-          <div class="col-lg-4 col-md-6 s2" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-4 col-md-6 s2 icon-box" data-aos="fade-up" data-aos-delay="100">
             <div class="icon"><i class="bi bi-card-checklist"></i></div>
             <h4 class="title"><a href="">wed development</a></h4>
             
           </div>
-          <div class="col-lg-4 col-md-6 s3" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-4 col-md-6 s3 icon-box" data-aos="fade-up" data-aos-delay="200">
             <div class="icon"><i class="bi bi-bar-chart"></i></div>
             <h4 class="title"><a href="">logo designing</a></h4>
             
@@ -339,39 +340,207 @@
 
           </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form  action="" id="submit-form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+        <div class="container container-form">
+          <div class="headder">
+            <h3>feedback</h3>
           </div>
+          <div class="col-lg-9">
+            <form id="gform" class="row contact_form" action="">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                        <small style="color: red;" id="name-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
+                        <small style="color: red;" id="email-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
+                        <small style="color: red;" id="subject-error"></small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"></textarea>
+                        <small style="color: red;" id="msg-error"></small>
+                    </div>
+                </div>
+                <div class="col-md-12 text-right">
+                    <button type="submit" value="submit" class="primary_btn">
+                        <span>Send Message</span>
+                    </button>
+                </div>
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        </div>
 
         </div>
 
       </div>
     </section><!-- End Contact Section -->
+
+
+
+
+
+    <script>
+
+      const form = document.getElementById("gform");
+      const username = document.getElementById("name");
+      const email = document.getElementById("email");
+      const subject = document.getElementById("subject");
+      const message = document.getElementById("message");
+
+      form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      
+          const validation = checkInput();
+      if (validation){
+
+        
+          const scriptURL ="https://script.google.com/macros/s/AKfycbywu8Sr8h6skk7mE2pp6EH8bvW_bOZi0CtO0wCwhO0-lBYa5LbXeU6BE2BXv7ngOB0l/exec";
+          fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+          console.log("Success!", response);
+
+          alert("Form submitted successfully")
+                window.location.reload()
+
+          const Toast = Swal.mixin({
+              toast: true,
+              position: "bottom-start",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+          });
+
+          Toast.fire({
+              icon: "success",
+              title: "Form Submitted Successfully",
+          });
+
+          setTimeout(function(){
+          location.reload();
+          },3000)
+          })
+          .catch((error) => {
+          console.error("Error!", error.message);
+          
+          });
+      
+      }
+      
+      else{
+      const Toast = Swal.mixin({
+          toast: true,
+          position: "bottom-start",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+      });
+
+      Toast.fire({
+          icon: "error",
+          title: "Something Went Wrong",
+      });
+      }
+
+
+      });
+
+
+      function checkInput() {
+      const isvalid = new Array();
+      const nameval = username.value;
+      const emailval = email.value.trim();
+      const subjectval = subject.value.trim();
+      const messageval = message.value.trim();
+
+
+      if (nameval === "" || nameval.match(/^ *$/) !== null) {
+          
+          document.getElementById("name-error").innerText = "Name cannot be blank."
+          isvalid.push(false);
+      } else {
+          isvalid.push(true);
+      }
+
+
+      if (emailval === "") {
+      document.getElementById("email-error").innerText = "Email field can't be blank"
+          isvalid.push(false);
+      } else if (!isEmail(emailval)) {
+          document.getElementById("email-error").innerText ="Please enter a valid email"
+          isvalid.push(false);
+      } else {
+      
+          isvalid.push(true);
+      }
+
+
+      if (subjectval === ""||subjectval.match(/^ *$/) !== null) {
+          isvalid.push(false);
+          document.getElementById("subject-error").innerText = "Subject field can't be empty"
+      } else {
+          
+          isvalid.push(true);
+      }
+
+
+      if (messageval === "" || messageval.match(/^ *$/) !== null) {
+          document.getElementById("msg-error").innerText = "Message field is empty"
+          isvalid.push(false);
+      } else {
+          
+          isvalid.push(true);
+      }
+
+
+      if (isvalid.includes(false)) return false;
+      else return true;
+
+
+
+      }
+
+      function isEmail(email) {
+      const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if(filter.test(email)) return true;
+      else return false;
+      }
+  </script>
+
+
+
+
+
+
+
+
+
+
 
   </main><!-- End #main -->
  
@@ -387,32 +556,13 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
 
-  <script>
-    $("#submit-form").submit((e)=>{
-        e.preventDefault()
-        $.ajax({
-            url:"https://script.google.com/macros/s/AKfycbywu8Sr8h6skk7mE2pp6EH8bvW_bOZi0CtO0wCwhO0-lBYa5LbXeU6BE2BXv7ngOB0l/exec",
-            data:$("#submit-form").serialize(),
-            method:"post",
-            success:function (response){
-                alert("Form submitted successfully")
-                window.location.reload()
-                //window.location.href="https://google.com"
-            },
-            error:function (err){
-                alert("Something Error")
-
-            }
-        })
-    })
-</script>
-
+ 
 </body>
 
 </html>
